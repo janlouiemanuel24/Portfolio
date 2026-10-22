@@ -74,6 +74,59 @@ function updateFooterDetails() {
 updateFooterDetails();
 window.setInterval(updateFooterDetails, 60_000);
 
+const interactivePortrait = document.querySelector(".hero-art");
+const cartoonPortrait = interactivePortrait?.querySelector(".hero-cartoon");
+const portraitPoses = {
+  "top-left": "images/portrait-top-left.jpg",
+  top: "images/portrait-top.jpg",
+  "top-right": "images/portrait-top-right.jpg",
+  left: "images/portrait-left.jpg",
+  straight: "images/portrait-straight.jpg",
+  right: "images/portrait-right.jpg",
+  "bottom-left": "images/portrait-bottom-left.jpg",
+  bottom: "images/portrait-bottom.jpg",
+  "bottom-right": "images/portrait-bottom-right.jpg",
+};
+
+Object.values(portraitPoses).forEach((src) => {
+  const image = new Image();
+  image.src = src;
+});
+
+function updatePortrait(event) {
+  if (!interactivePortrait || !cartoonPortrait) return;
+
+  const bounds = interactivePortrait.getBoundingClientRect();
+  if (!bounds.width || !bounds.height) return;
+
+  const x = event.clientX - bounds.left;
+  const y = event.clientY - bounds.top;
+  const horizontalOffset = (x - bounds.width / 2) / bounds.width;
+  const verticalOffset = (y - bounds.height / 2) / bounds.height;
+  const horizontal = horizontalOffset < -.16 ? "left" : horizontalOffset > .16 ? "right" : "";
+  const vertical = verticalOffset < -.16 ? "top" : verticalOffset > .16 ? "bottom" : "";
+  const pose = [vertical, horizontal].filter(Boolean).join("-") || "straight";
+
+  if (interactivePortrait.classList.contains("is-hovering")) {
+    interactivePortrait.style.setProperty("--pointer-x", `${x}px`);
+    interactivePortrait.style.setProperty("--pointer-y", `${y}px`);
+  }
+  if (cartoonPortrait.getAttribute("src") !== portraitPoses[pose]) {
+    cartoonPortrait.setAttribute("src", portraitPoses[pose]);
+  }
+}
+
+interactivePortrait?.addEventListener("pointerenter", (event) => {
+  interactivePortrait.classList.add("is-hovering");
+  updatePortrait(event);
+});
+interactivePortrait?.addEventListener("pointerleave", () => {
+  interactivePortrait.classList.remove("is-hovering");
+  interactivePortrait.style.removeProperty("--pointer-x");
+  interactivePortrait.style.removeProperty("--pointer-y");
+});
+document.addEventListener("pointermove", updatePortrait, { passive: true });
+
 const revealTargets = document.querySelectorAll([
   ".section-heading",
   ".project-card",
