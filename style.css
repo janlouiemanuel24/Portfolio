@@ -784,10 +784,17 @@ body.intro-playing { overflow: hidden; }
 
 @media (max-width: 900px) {
   .site-header { padding: 0 5%; }
-  .hero { min-height: 660px; padding-right: 5%; padding-left: 5%; }
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    min-height: 660px;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+  .hero-copy { padding: 0 0 1rem; }
   .hero h1 { font-size: clamp(3.25rem, 8vw, 5.7rem); }
   .hero-bottom { align-items: flex-start; flex-direction: column; gap: 1.2rem; }
-  .hero-art { width: min(100%, 340px); }
+  .hero-art { width: min(100%, 340px); margin: 0 auto; }
   .hero-index { right: 5%; left: 5%; }
   .section-shell { padding-right: 8%; padding-left: 8%; }
   .certificate-card { min-height: 220px; }
