@@ -614,7 +614,7 @@ body.intro-playing { overflow: hidden; }
 
 .section-aside { max-width: 205px; margin: 0 0 .4rem; color: var(--muted); font-size: .77rem; line-height: 1.75; }
 
-.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.4rem; row-gap: 3rem; }
+.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.4rem; row-gap: 3rem; overflow-x: clip; }
 .project-card { min-width: 0; }
 
 .project-visual {
