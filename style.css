@@ -663,6 +663,98 @@ body.intro-playing { overflow: hidden; }
 .work-note { margin: 3rem 0 0; color: var(--muted); font-size: .75rem; }
 .work-note a { margin-left: .35rem; padding-bottom: .2rem; border-bottom: 1px solid var(--ink); color: var(--ink); }
 
+.stack { padding-top: 3.5rem; padding-bottom: 5rem; }
+.stack-heading { margin-bottom: 4.1rem; text-align: center; }
+.stack-title {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  color: #f4f4f5;
+  font-size: clamp(3.2rem, 7vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -.055em;
+  line-height: 1.1;
+  isolation: isolate;
+}
+.stack-title::before {
+  position: absolute;
+  z-index: -1;
+  inset: -.18em -.3em;
+  content: attr(data-text);
+  color: rgba(255, 255, 255, .16);
+  filter: blur(15px);
+  transform: scale(1.1);
+}
+.stack-divider {
+  position: relative;
+  display: flex;
+  width: min(400px, 72%);
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin: 4.8rem auto 2.7rem;
+}
+.stack-divider::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.14) 12%, rgba(255,255,255,.14) 88%, transparent);
+}
+.stack-divider::after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 0;
+  content: "";
+  border-right: 7px solid rgba(255,255,255,.13);
+  border-left: 7px solid rgba(255,255,255,.13);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+.stack-divider span {
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  border: 1px solid rgba(255,255,255,.72);
+  background: var(--paper);
+  transform: rotate(45deg);
+}
+.stack-tagline {
+  margin: 0;
+  color: #a0a1a4;
+  font-size: clamp(.78rem, 1.7vw, 1.12rem);
+  font-weight: 700;
+  letter-spacing: .19em;
+}
+.stack-tagline strong { margin-left: .85rem; color: #f4f4f5; }
+.stack-list { display: flex; max-width: 1050px; flex-wrap: wrap; justify-content: center; gap: .9rem 1rem; margin: 0 auto; }
+.stack-item {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  gap: .7rem;
+  padding: .55rem 1rem;
+  border: 1px solid #292d30;
+  border-radius: 999px;
+  background: #111315;
+  color: #f1f2f3;
+  font-size: .76rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.stack-icon { display: grid; width: 22px; height: 22px; flex: 0 0 22px; place-items: center; font-size: .72rem; font-weight: 700; line-height: 1; }
+.stack-icon-html { color: #fff; background: #e44d26; clip-path: polygon(8% 0, 92% 0, 82% 88%, 50% 100%, 18% 88%); }
+.stack-icon-css { color: #fff; background: #1572b6; clip-path: polygon(8% 0, 92% 0, 82% 88%, 50% 100%, 18% 88%); }
+.stack-icon-javascript { border-radius: 2px; background: #f0db4f; color: #171717; font-size: .6rem; }
+.stack-icon-mysql { color: #00a8e3; font-size: .78rem; letter-spacing: -.08em; }
+.stack-icon-bootstrap { border-radius: 5px; background: #7952b3; color: #fff; font-size: 1rem; }
+.stack-icon-next { border-radius: 50%; background: #f2f3f4; color: #08090b; font-size: .85rem; }
+.stack-icon-react { color: #61dafb; }
+.stack-icon-react svg { display: block; width: 22px; height: 22px; }
+
 .certificates { padding-top: 3rem; padding-bottom: 8rem; }
 .certificate-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--line); background: var(--line); }
 .certificate-card { display: flex; min-height: 210px; flex-direction: column; align-items: flex-start; padding: 1.5rem; background: rgba(7, 9, 11, .94); transition: background .25s ease; }
@@ -849,6 +941,14 @@ body.intro-playing { overflow: hidden; }
   .certificates .section-heading h2 { font-size: clamp(2.45rem, 9.2vw, 3.5rem); }
   .section-aside { max-width: 260px; font-size: .72rem; }
   .project-grid { grid-template-columns: 1fr; row-gap: 2.2rem; }
+  .stack { padding-top: 2.8rem; padding-bottom: 4rem; }
+  .stack-heading { margin-bottom: 3rem; }
+  .stack-title { font-size: clamp(3rem, 14vw, 4rem); }
+  .stack-divider { margin: 3.4rem auto 2rem; }
+  .stack-tagline { font-size: .68rem; letter-spacing: .12em; }
+  .stack-tagline strong { margin-left: .4rem; }
+  .stack-list { gap: .7rem; }
+  .stack-item { min-height: 42px; padding: .48rem .8rem; font-size: .72rem; }
   .certificates { padding-top: 1rem; padding-bottom: 5.5rem; }
   .certificate-grid { grid-template-columns: 1fr; }
   .certificate-card { min-height: 185px; }

@@ -253,8 +253,10 @@ document.addEventListener("pointermove", updatePortrait, { passive: true });
 
 const revealTargets = document.querySelectorAll([
   ".section-heading",
+  ".stack-heading",
   ".project-card",
   ".work-note",
+  ".stack-item",
   ".about-top",
   ".about-content > *",
   ".principle",
